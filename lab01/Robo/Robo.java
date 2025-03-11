@@ -16,7 +16,7 @@ public Robo(String n, int x, int y){
 //metodo de acesso
 public mover(int delta_x, int delta_y){
     x_position += delta_x;
-    y_position +=delta_y;
+    y_position += delta_y;
 }
 
 
