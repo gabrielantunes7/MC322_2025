@@ -1,5 +1,3 @@
-package MC322_2025.Robo;
-
 public class Robo {
     private String robot_name;
     private int x_position;
