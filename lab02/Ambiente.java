@@ -6,7 +6,8 @@ public class Ambiente{
     private int largura;
     private int altura; 
     private int altitude;
-    private ArrayList<Robo> robos; // ArrayList utilizado para guardar os robôs que estão no ambiente
+    private ArrayList<Robo> robos;           // ArrayList utilizado para guardar os robôs que estão no ambiente
+    private ArrayList<Obstaculo> obstaculos; // ArrayList utilizado para guardar os obstáculos que estão no ambiente
 
     // Inicializador
     // Cria um ambiente com dada largura, altura e altitude e cria um ArrayList para os robôs
@@ -20,6 +21,11 @@ public class Ambiente{
     // Adiciona um robô ao ambiente (coloca-o no ArrayList)
     public void adicionarRobo(Robo r){
         robos.add(r);
+    }
+    
+    // Adiciona um robô ao ambiente (coloca-o no ArrayList)
+    public void adicionarObstaculo(Obstaculo o){
+        obstaculos.add(o);
     }
 
     // Retorna true se dada posição está dentro dos limites do ambiente e false se não
