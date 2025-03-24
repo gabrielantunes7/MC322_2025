@@ -31,7 +31,7 @@ public class Ambiente{
     // Retorna true se dada posição está dentro dos limites do ambiente e false se não
     public boolean dentroDosLimites(int x, int y, int z){
         if ((x & y & z) >= 0){
-            if (x <= this.largura && y <= this.altura && z <= this.altura)
+            if (x <= this.largura && y <= this.altura && z <= this.altitude)
                 return true;
         }
         return false;

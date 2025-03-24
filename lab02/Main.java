@@ -1,12 +1,16 @@
 public class Main{
     public static void main(String[] args){
-        int l = 10, h = 10;
+        int x = 10, y = 10, z = 10;
         Ambiente a;
         Robo r1, r2;
 
-        a = new Ambiente(l, h);
-        r1 = new Robo("Isaias", 0, 0);
-        r2 = new Robo("Gabriel", 3, 7);
+        a = new Ambiente(x, y, z);
+
+        r1 = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
+        a.adicionarRobo(r1);
+        
+        r2 = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
+        a.adicionarRobo(r2);
 
         r1.mover(3, 11);
         r2.mover(-3, 1);

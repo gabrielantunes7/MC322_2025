@@ -111,3 +111,44 @@ class RoboAereo extends Robo {
         }
     }
 }
+
+// Robô aéreo capaz de levar certa quantidade de carga
+class RoboCargueiro extends RoboAereo {
+    protected int capacidade_carga; // quantos kg de carga consegue levar
+
+    public RoboCargueiro(String nome, String direcao, int x, int y, int altitudeMaxima, int capacidade) {
+        super(nome, direcao, x, y, altitudeMaxima);
+        this.capacidade_carga = capacidade;
+    }
+
+    // leva uma carga até uma posição, ignorando obstáculos (porque é aéreo)
+    public void levarCarga(int peso_carga, int delta_x, int delta_y) {
+        if (peso_carga > this.capacidade_carga)
+            System.out.println(nomeRobo + " não consegue levar essa carga!");
+        else{
+            int novo_x = this.xPosicao + delta_x;
+            int novo_y = this.yPosicao + delta_y;
+            super.mover(delta_x, delta_y);
+            System.out.println(nomeRobo + " levou uma carga de " + capacidade_carga + " kg para a posição (" + novo_x + ", " + novo_y + ")!");
+        }
+    }
+}
+
+// Robô aéreo capaz de ficar invísivel
+class RoboFurtivo extends RoboAereo {
+    protected boolean modo_furtivo; // true se o modo furtivo do robô está ativado
+
+    public RoboFurtivo(String nome, String direcao, int x, int y, int altitudeMaxima) {
+        super(nome, direcao, x, y, altitudeMaxima);
+        this.modo_furtivo = false; // começa com o modo furtivo desativado
+    }
+    
+    // se o modo furtivo está desativado, ativa; caso contrário, desativa
+    public void alternarModoFurtivo() {
+        modo_furtivo = !modo_furtivo;
+        if (this.modo_furtivo)
+            System.out.println(nomeRobo + " ativou o modo furtivo e agora está invisível, cuidado!");
+        else
+            System.out.println(nomeRobo + " desativou o modo furtivo e agora não está mais invisível!");
+    }
+}
