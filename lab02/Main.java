@@ -4,8 +4,6 @@ public class Main{
         Ambiente a;
         RoboTerrestre robo_terra;
         RoboAereo robo_ar;
-        BispoRobo robo_bispo;
-        CavaloRobo robo_cavalo;
         RoboCargueiro robo_carga;
         RoboFurtivo robo_furtivo;
 
