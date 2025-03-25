@@ -2,30 +2,43 @@ public class Main{
     public static void main(String[] args){
         int x = 10, y = 10, z = 10;
         Ambiente a;
-        Robo r1, r2;
+        RoboTerrestre robo_terra;
+        RoboAereo robo_ar;
+        BispoRobo robo_bispo;
+        CavaloRobo robo_cavalo;
+        RoboCargueiro robo_carga;
+        RoboFurtivo robo_furtivo;
 
         a = new Ambiente(x, y, z);
 
-        r1 = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
-        a.adicionarRobo(r1);
+        robo_terra = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
+        a.adicionarRobo(robo_terra);
         
-        r2 = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
-        a.adicionarRobo(r2);
+        robo_ar = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
+        a.adicionarRobo(robo_ar);
 
-        r1.mover(3, 11);
-        r2.mover(-3, 1);
+        robo_carga = new RoboCargueiro("Carga", "Sul", 1, 2, 5, 100);
+        a.adicionarRobo(robo_carga);
 
-        if (a.dentroDosLimites(r1.x_position, r1.y_position))
-            System.out.println(r1.robot_name + " está dentro dos limites.");
-        else
-            System.out.println(r1.robot_name + " não está dentro dos limites.");
+        robo_furtivo = new RoboFurtivo("Furtivo", "Oeste", 5, 5, 10);
+        a.adicionarRobo(robo_furtivo);
 
-        if (a.dentroDosLimites(r2.x_position, r2.y_position))
-            System.out.println(r2.robot_name + " está dentro dos limites.");
-        else
-            System.out.println(r2.robot_name + " não está dentro dos limites.");
+        robo_terra.exibirPosicao();
+        robo_terra.mover(3, 3);
+        robo_terra.exibirPosicao();
 
-        r1.exibirPosicao();
-        r2.exibirPosicao();
+        robo_ar.exibirPosicao();
+        robo_ar.mover(3, -3);
+        robo_ar.exibirPosicao();
+        robo_ar.subir(5);
+        robo_ar.exibirPosicao();
+        robo_ar.descer(2);
+        robo_ar.exibirPosicao();
+
+        robo_carga.exibirPosicao();
+        robo_carga.levarCarga(50, 5, -2);
+        robo_carga.exibirPosicao();
+
+        robo_furtivo.alternarModoFurtivo();
     }
 }

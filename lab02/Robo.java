@@ -23,7 +23,7 @@ public class Robo {
     public void exibirPosicao() {
         System.out.println(nomeRobo + " está em: (" + xPosicao + ", " + yPosicao + ")");
     }
-
+    
     // Método que faz com que um robô identifique obstáculos
     public void identificarObstaculo() {
         System.out.println(nomeRobo + " está verificando obstáculos...");
@@ -32,14 +32,14 @@ public class Robo {
 
 // Classe RoboTerrestre
 class RoboTerrestre extends Robo {
-    protected int velocidadeMaxima;
-
+    private int velocidadeMaxima;
+    
     // Construtor do RoboTerrestre
     public RoboTerrestre(String nome, String direcao, int x, int y, int velocidadeMaxima) {
         super(nome, direcao, x, y);
         this.velocidadeMaxima = velocidadeMaxima;
     }
-
+    
     // Sobrescrita do método de movimento, agora adicionando a verificação da velocidade máxima
     @Override
     public void mover(int deltaX, int deltaY) {
@@ -57,7 +57,7 @@ class CavaloRobo extends RoboTerrestre {
     public CavaloRobo(String nome, String direcao, int x, int y, int velocidadeMaxima) {
         super(nome, direcao, x, y, velocidadeMaxima);
     }
-
+    
     // Sobrescrita do método de movimento (em L)
     @Override
     public void mover(int deltaX, int deltaY) {
@@ -65,11 +65,11 @@ class CavaloRobo extends RoboTerrestre {
         boolean movimentoValido = 
             (Math.abs(deltaX) == 2 && Math.abs(deltaY) == 1) || 
             (Math.abs(deltaX) == 1 && Math.abs(deltaY) == 2);
-
-        if (movimentoValido) {
-            super.mover(deltaX, deltaY);
-            System.out.println(nomeRobo + " moveu-se em L para: (" + xPosicao + ", " + yPosicao + ")");
-        } else {
+            
+            if (movimentoValido) {
+                super.mover(deltaX, deltaY);
+                System.out.println(nomeRobo + " moveu-se em L para: (" + xPosicao + ", " + yPosicao + ")");
+            } else {
             System.out.println(nomeRobo + " só pode se mover em L como um cavalo no xadrez!");
         }
     }
@@ -81,7 +81,7 @@ class BispoRobo extends RoboTerrestre {
     public BispoRobo(String nome, String direcao, int x, int y, int velocidadeMaxima) {
         super(nome, direcao, x, y, velocidadeMaxima);
     }
-
+    
     // Sobrescrita do método de movimento (em diagonal)
     @Override
     public void mover(int deltaX, int deltaY) {
@@ -95,19 +95,18 @@ class BispoRobo extends RoboTerrestre {
     }
 }                     
 
-
 // Classe RoboAereo
 class RoboAereo extends Robo {
-    protected int altitude;
-    protected int altitudeMaxima;
-
+    private int altitude;
+    private int altitudeMaxima;
+    
     // Construtor do RoboAereo
     public RoboAereo(String nome, String direcao, int x, int y, int altitudeMaxima) {
         super(nome, direcao, x, y);
         this.altitude = 0;
         this.altitudeMaxima = altitudeMaxima;
     }
-
+    
     // Método de movimento para cima
     public void subir(int metros) {
         if (altitude + metros <= altitudeMaxima) {
@@ -116,8 +115,8 @@ class RoboAereo extends Robo {
             System.out.println(nomeRobo + " atingiu a altitude máxima!");
         }
     }
-
-    // Método do movimento para baixo
+    
+    // Método de movimento para baixo
     public void descer(int metros) {
         if (altitude - metros >= 0) {
             altitude -= metros;
@@ -125,12 +124,18 @@ class RoboAereo extends Robo {
             System.out.println(nomeRobo + " não pode descer abaixo do nível do solo!");
         }
     }
+    
+    // Sobrescrita do método de exibir posição (inclui altitude)
+    @Override
+    public void exibirPosicao(){
+        System.out.println(nomeRobo + " está em: (" + xPosicao + ", " + yPosicao + ", " + altitude + ")");
+    }
 }
 
 // Classe RoboCargueiro (herdada de RoboAereo)
 // Robô aéreo capaz de levar certa quantidade de carga
 class RoboCargueiro extends RoboAereo {
-    protected int capacidade_carga; // quantos kg de carga consegue levar
+    private int capacidade_carga; // quantos kg de carga consegue levar
 
     // Construtor do RoboCargueiro
     public RoboCargueiro(String nome, String direcao, int x, int y, int altitudeMaxima, int capacidade) {
@@ -154,7 +159,7 @@ class RoboCargueiro extends RoboAereo {
 // Classe RoboFurtivo (herdada de RoboAereo)
 // Robô aéreo capaz de ficar invísivel
 class RoboFurtivo extends RoboAereo {
-    protected boolean modo_furtivo; // true se o modo furtivo do robô está ativado
+    private boolean modo_furtivo; // true se o modo furtivo do robô está ativado
 
     // Construtor do RoboFurtivo
     public RoboFurtivo(String nome, String direcao, int x, int y, int altitudeMaxima) {
