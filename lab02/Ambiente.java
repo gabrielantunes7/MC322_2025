@@ -6,7 +6,7 @@ public class Ambiente{
     private int largura;
     private int altura; 
     private int altitude;
-    private ArrayList<Robo> robos; // ArrayList utilizado para guardar os robôs que estão no ambiente
+    private ArrayList<Robo> robos;           // ArrayList utilizado para guardar os robôs que estão no ambiente
 
     // Inicializador
     // Cria um ambiente com dada largura, altura e altitude e cria um ArrayList para os robôs
@@ -24,21 +24,24 @@ public class Ambiente{
     
     // Retorna true se dada posição está dentro dos limites do ambiente e false se não
     public boolean dentroDosLimites(int x, int y, int z){
-        if ((x & y & z) >= 0){
+        if (x >= 0 && y >= 0 && z >= 0){
             if (x <= this.largura && y <= this.altura && z <= this.altitude)
                 return true;
         }
         return false;
     }
 
-    // Exibe o nome e a posição de todos os robôs que estão num ambiente
-    public void exibirRobos(){
-        if (robos.isEmpty()){
-            System.out.println("O ambiente está vazio!");
-            return;
-        }
-
-        for (Robo r: robos)
-            r.exibirPosicao();
+    
+    public int getLargura(){
+        return largura;
     }
+
+    public int getAltura(){
+        return altura;
+    }
+    public int getAltitude(){
+        return altitude;
+    }
+
+
 }

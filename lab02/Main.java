@@ -1,42 +1,60 @@
-public class Main{
-    public static void main(String[] args){
+public class Main {
+    public static void main(String[] args) {
         int x = 10, y = 10, z = 10;
-        Ambiente a;
-        RoboTerrestre robo_terra;
-        RoboAereo robo_ar;
-        RoboCargueiro robo_carga;
-        RoboFurtivo robo_furtivo;
+        Ambiente ambiente = new Ambiente(x, y, z);
 
-        a = new Ambiente(x, y, z);
-
-        robo_terra = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
-        a.adicionarRobo(robo_terra);
+        RoboTerrestre roboTerra = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
+        ambiente.adicionarRobo(roboTerra);
         
-        robo_ar = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
-        a.adicionarRobo(robo_ar);
+        RoboAereo roboAr = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
+        ambiente.adicionarRobo(roboAr);
 
-        robo_carga = new RoboCargueiro("Carga", "Sul", 1, 2, 5, 100);
-        a.adicionarRobo(robo_carga);
+        RoboCargueiro roboCarga = new RoboCargueiro("Carga", "Sul", 1, 2, 5, 100);
+        ambiente.adicionarRobo(roboCarga);
 
-        robo_furtivo = new RoboFurtivo("Furtivo", "Oeste", 5, 5, 10);
-        a.adicionarRobo(robo_furtivo);
+        RoboFurtivo roboFurtivo = new RoboFurtivo("Furtivo", "Oeste", 5, 5, 10);
+        ambiente.adicionarRobo(roboFurtivo);
 
-        robo_terra.exibirPosicao();
-        robo_terra.mover(3, 3);
-        robo_terra.exibirPosicao();
+        CavaloRobo roboCavalo = new CavaloRobo("Cavalo", "Norte", 2, 2, 3, 3, ambiente);
+        ambiente.adicionarRobo(roboCavalo);
+        
+        BispoRobo roboBispo = new BispoRobo("Bispo", "Leste", 3, 3, 3, 5, ambiente);
+        ambiente.adicionarRobo(roboBispo);
 
-        robo_ar.exibirPosicao();
-        robo_ar.mover(3, -3);
-        robo_ar.exibirPosicao();
-        robo_ar.subir(5);
-        robo_ar.exibirPosicao();
-        robo_ar.descer(2);
-        robo_ar.exibirPosicao();
+        // Testes de movimentação
+        roboTerra.exibirPosicao();
+        roboTerra.mover(3, 3);
+        roboTerra.exibirPosicao();
 
-        robo_carga.exibirPosicao();
-        robo_carga.levarCarga(50, 5, -2);
-        robo_carga.exibirPosicao();
+        roboAr.exibirPosicao();
+        roboAr.mover(3, -3);
+        roboAr.exibirPosicao();
+        roboAr.subir(5);
+        roboAr.exibirPosicao();
+        roboAr.descer(2);
+        roboAr.exibirPosicao();
 
-        robo_furtivo.alternarModoFurtivo();
+        roboCarga.exibirPosicao();
+        roboCarga.levarCarga(50, 5, -2);
+        roboCarga.exibirPosicao();
+
+        roboFurtivo.alternarModoFurtivo();
+
+        roboCavalo.exibirPosicao();
+        roboCavalo.mover(2, 1);
+        roboCavalo.exibirPosicao();
+        roboCavalo.mover(1, 2);
+        roboCavalo.exibirPosicao();
+        roboCavalo.mover(2, 1);
+        roboCavalo.exibirPosicao();
+        roboCavalo.resetStamina();
+        roboCavalo.mover(1, 2);
+        roboCavalo.exibirPosicao();
+
+        roboBispo.exibirPosicao();
+        roboBispo.mover(2, 2);
+        roboBispo.exibirPosicao();
+        int[] casaMaxima = roboBispo.casaMaisDistante();
+        System.out.println(roboBispo.nomeRobo + " pode se mover até: (" + casaMaxima[0] + ", " + casaMaxima[1] + ")");
     }
 }

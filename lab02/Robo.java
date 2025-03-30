@@ -4,6 +4,7 @@ public class Robo {
     protected String direcao;
     protected int xPosicao;
     protected int yPosicao;
+    protected Ambiente ambiente;
 
     // Construtor da classe Robo
     public Robo(String nome, String direcaoRobo, int x, int y) {
@@ -11,6 +12,7 @@ public class Robo {
         this.direcao = direcaoRobo;
         this.xPosicao = x;
         this.yPosicao = y;
+        this.ambiente = ambiente;
     }
 
     // Método de movimento do Robo
@@ -32,68 +34,115 @@ public class Robo {
 
 // Classe RoboTerrestre
 class RoboTerrestre extends Robo {
-    private int velocidadeMaxima;
+    protected int zPosicao = 0;
+    private int distanciaMaxima;
     
     // Construtor do RoboTerrestre
-    public RoboTerrestre(String nome, String direcao, int x, int y, int velocidadeMaxima) {
+    public RoboTerrestre(String nome, String direcao, int x, int y, int distanciaMaxima) {
         super(nome, direcao, x, y);
-        this.velocidadeMaxima = velocidadeMaxima;
+        this.distanciaMaxima = distanciaMaxima;
     }
     
-    // Sobrescrita do método de movimento, agora adicionando a verificação da velocidade máxima
+    // Sobrescrita do método de movimento, agora adicionando a verificação da distancia máxima
     @Override
     public void mover(int deltaX, int deltaY) {
-        if (Math.abs(deltaX) <= velocidadeMaxima && Math.abs(deltaY) <= velocidadeMaxima) {
+        if (Math.abs(deltaX) <= distanciaMaxima && Math.abs(deltaY) <= distanciaMaxima) {
             super.mover(deltaX, deltaY);
         } else {
-            System.out.println(nomeRobo + " não pode se mover tão rápido!");
+            System.out.println(nomeRobo + " não pode se mover tão longe!");
         }
     }
 }
 
 // Classe CavaloRobo (herdada de RoboTerrestre, movimentação em L)
 class CavaloRobo extends RoboTerrestre {
-    // Construtor do CavaloRobo
-    public CavaloRobo(String nome, String direcao, int x, int y, int velocidadeMaxima) {
-        super(nome, direcao, x, y, velocidadeMaxima);
-    }
     
+    private int stamina;
+    private int movimentosRealizados;
+    private Ambiente ambiente;
+
+    // Construtor do CavaloRobo
+    public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente) {
+        super(nome, direcao, x, y, distanciaMaxima);
+        this.stamina = stamina;
+        this.movimentosRealizados = 0;
+        this.ambiente = ambiente;
+    } 
+
     // Sobrescrita do método de movimento (em L)
     @Override
     public void mover(int deltaX, int deltaY) {
-        // Verifica se o movimento segue o padrão do cavalo no xadrez (L)
+        if (movimentosRealizados >= stamina) {
+            System.out.println(nomeRobo + " está sem energia para se mover!");
+            return;
+        }
+
         boolean movimentoValido = 
             (Math.abs(deltaX) == 2 && Math.abs(deltaY) == 1) || 
             (Math.abs(deltaX) == 1 && Math.abs(deltaY) == 2);
-            
-            if (movimentoValido) {
+    
+        int novaX = xPosicao + deltaX;
+        int novaY = yPosicao + deltaY;
+    
+        if (movimentoValido) {
+            if (ambiente.dentroDosLimites(novaX, novaY, zPosicao)) {
                 super.mover(deltaX, deltaY);
+                movimentosRealizados++;
                 System.out.println(nomeRobo + " moveu-se em L para: (" + xPosicao + ", " + yPosicao + ")");
             } else {
+                System.out.println(nomeRobo + " não pode se mover para fora dos limites do ambiente!");
+            }
+        } else {
             System.out.println(nomeRobo + " só pode se mover em L como um cavalo no xadrez!");
         }
     }
+
+    // Método para restaurar stamina
+    public void resetStamina() {
+        movimentosRealizados = 0;
+        System.out.println(nomeRobo + " recuperou sua energia!");
+    }
 }
+
 
 // Classe BispoRobo (herdada de RoboTerrestre, movimentação em diagonal)
 class BispoRobo extends RoboTerrestre {
+    private int alcanceMaximoDiagonal;
+    
     // Construtor do BispoRobo
-    public BispoRobo(String nome, String direcao, int x, int y, int velocidadeMaxima) {
-        super(nome, direcao, x, y, velocidadeMaxima);
+    public BispoRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int alcanceMaximoDiagonal, Ambiente ambiente) {
+        super(nome, direcao, x, y, distanciaMaxima);
+        this.ambiente = ambiente;
+        this.alcanceMaximoDiagonal = alcanceMaximoDiagonal;
+    }
+    
+    // Método que retorna a casa mais distante que o bispo pode alcançar
+    public int[] casaMaisDistante() {
+        int maxDist = Math.min(Math.min(ambiente.getLargura() - xPosicao, ambiente.getAltura() - yPosicao), alcanceMaximoDiagonal);
+        
+        return new int[]{xPosicao + maxDist, yPosicao + maxDist};
     }
     
     // Sobrescrita do método de movimento (em diagonal)
     @Override
     public void mover(int deltaX, int deltaY) {
-        // O bispo só pode se mover na diagonal (|deltaX| == |deltaY|)
-        if (Math.abs(deltaX) == Math.abs(deltaY)) {
-            super.mover(deltaX, deltaY);
-            System.out.println(nomeRobo + " moveu-se na diagonal para: (" + xPosicao+ ", " + yPosicao + ")");
+        int novaX = xPosicao + deltaX;
+        int novaY = yPosicao + deltaY;
+        
+        // O bispo só pode se mover na diagonal (|deltaX| == |deltaY|) e dentro do alcance máximo
+        if (Math.abs(deltaX) == Math.abs(deltaY) && Math.abs(deltaX) <= alcanceMaximoDiagonal) {
+            if (ambiente.dentroDosLimites(novaX, novaY, 0)) {
+                super.mover(deltaX, deltaY);
+                System.out.println(nomeRobo + " moveu-se na diagonal para: (" + xPosicao + ", " + yPosicao + ")");
+            } else {
+                System.out.println(nomeRobo + " não pode se mover para fora dos limites do ambiente!");
+            }
         } else {
-            System.out.println(nomeRobo + " só pode se mover na diagonal como um bispo no xadrez!");
+            System.out.println(nomeRobo + " só pode se mover na diagonal dentro do alcance máximo!");
         }
     }
-}                     
+}
+      
 
 // Classe RoboAereo
 class RoboAereo extends Robo {
