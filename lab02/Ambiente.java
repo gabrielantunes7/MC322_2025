@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+ import java.util.ArrayList;
 
 // Classe Ambiente
 // Usada para representar o ambiente em que objetos da classe robô estão inseridos
@@ -22,15 +22,6 @@ public class Ambiente{
         robos.add(r);
     }
     
-    // Retorna true se dada posição está dentro dos limites do ambiente e false se não
-    public boolean dentroDosLimites(int x, int y, int z){
-        if (x >= 0 && y >= 0 && z >= 0){
-            if (x <= this.largura && y <= this.altura && z <= this.altitude)
-                return true;
-        }
-        return false;
-    }
-
     
     public int getLargura(){
         return largura;

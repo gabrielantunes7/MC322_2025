@@ -25,7 +25,7 @@ public class Robo {
     public void exibirPosicao() {
         System.out.println(nomeRobo + " está em: (" + xPosicao + ", " + yPosicao + ")");
     }
-    
+
     // Método que faz com que um robô identifique obstáculos
     public void identificarObstaculo() {
         System.out.println(nomeRobo + " está verificando obstáculos...");
@@ -36,14 +36,15 @@ public class Robo {
 class RoboTerrestre extends Robo {
     protected int zPosicao = 0;
     private int distanciaMaxima;
-    
+
     // Construtor do RoboTerrestre
     public RoboTerrestre(String nome, String direcao, int x, int y, int distanciaMaxima) {
         super(nome, direcao, x, y);
         this.distanciaMaxima = distanciaMaxima;
     }
-    
-    // Sobrescrita do método de movimento, agora adicionando a verificação da distancia máxima
+
+    // Sobrescrita do método de movimento, agora adicionando a verificação da
+    // distancia máxima
     @Override
     public void mover(int deltaX, int deltaY) {
         if (Math.abs(deltaX) <= distanciaMaxima && Math.abs(deltaY) <= distanciaMaxima) {
@@ -56,36 +57,34 @@ class RoboTerrestre extends Robo {
 
 // Classe CavaloRobo (herdada de RoboTerrestre, movimentação em L)
 class CavaloRobo extends RoboTerrestre {
-    
     private int stamina;
     private int movimentosRealizados;
     private Ambiente ambiente;
 
-    // Construtor do CavaloRobo
+    // Construtor do CavaloRObo
     public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente) {
         super(nome, direcao, x, y, distanciaMaxima);
         this.stamina = stamina;
         this.movimentosRealizados = 0;
         this.ambiente = ambiente;
-    } 
+    }
 
-    // Sobrescrita do método de movimento (em L)
+    // Sobrescrita do método de movimento (em L, como no Xadrez)
     @Override
     public void mover(int deltaX, int deltaY) {
         if (movimentosRealizados >= stamina) {
             System.out.println(nomeRobo + " está sem energia para se mover!");
             return;
         }
+        // checka se o movimento foi em L (2 em um sentido e 1 no outro)
+        boolean movimentoValido = (Math.abs(deltaX) == 2 && Math.abs(deltaY) == 1) ||
+                (Math.abs(deltaX) == 1 && Math.abs(deltaY) == 2);
 
-        boolean movimentoValido = 
-            (Math.abs(deltaX) == 2 && Math.abs(deltaY) == 1) || 
-            (Math.abs(deltaX) == 1 && Math.abs(deltaY) == 2);
-    
         int novaX = xPosicao + deltaX;
         int novaY = yPosicao + deltaY;
-    
+        //checka se está dentro do tabuleiro
         if (movimentoValido) {
-            if (ambiente.dentroDosLimites(novaX, novaY, zPosicao)) {
+            if (novaX >= 0 && novaX < ambiente.getLargura() && novaY >= 0 && novaY < ambiente.getAltura()) {
                 super.mover(deltaX, deltaY);
                 movimentosRealizados++;
                 System.out.println(nomeRobo + " moveu-se em L para: (" + xPosicao + ", " + yPosicao + ")");
@@ -104,34 +103,36 @@ class CavaloRobo extends RoboTerrestre {
     }
 }
 
-
 // Classe BispoRobo (herdada de RoboTerrestre, movimentação em diagonal)
 class BispoRobo extends RoboTerrestre {
     private int alcanceMaximoDiagonal;
-    
+
     // Construtor do BispoRobo
-    public BispoRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int alcanceMaximoDiagonal, Ambiente ambiente) {
+    public BispoRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int alcanceMaximoDiagonal,
+            Ambiente ambiente) {
         super(nome, direcao, x, y, distanciaMaxima);
         this.ambiente = ambiente;
         this.alcanceMaximoDiagonal = alcanceMaximoDiagonal;
     }
-    
+
     // Método que retorna a casa mais distante que o bispo pode alcançar
     public int[] casaMaisDistante() {
-        int maxDist = Math.min(Math.min(ambiente.getLargura() - xPosicao, ambiente.getAltura() - yPosicao), alcanceMaximoDiagonal);
-        
-        return new int[]{xPosicao + maxDist, yPosicao + maxDist};
+        int maxDist = Math.min(Math.min(ambiente.getLargura() - xPosicao, ambiente.getAltura() - yPosicao),
+                alcanceMaximoDiagonal);
+
+        return new int[] { xPosicao + maxDist, yPosicao + maxDist };
     }
-    
+
     // Sobrescrita do método de movimento (em diagonal)
     @Override
     public void mover(int deltaX, int deltaY) {
         int novaX = xPosicao + deltaX;
         int novaY = yPosicao + deltaY;
-        
-        // O bispo só pode se mover na diagonal (|deltaX| == |deltaY|) e dentro do alcance máximo
+
+        // O bispo só pode se mover na diagonal (|deltaX| == |deltaY|) e dentro do
+        // alcance máximo
         if (Math.abs(deltaX) == Math.abs(deltaY) && Math.abs(deltaX) <= alcanceMaximoDiagonal) {
-            if (ambiente.dentroDosLimites(novaX, novaY, 0)) {
+            if (novaX >= 0 && novaX < ambiente.getLargura() && novaY >= 0 && novaY < ambiente.getAltura()) {
                 super.mover(deltaX, deltaY);
                 System.out.println(nomeRobo + " moveu-se na diagonal para: (" + xPosicao + ", " + yPosicao + ")");
             } else {
@@ -142,20 +143,19 @@ class BispoRobo extends RoboTerrestre {
         }
     }
 }
-      
 
 // Classe RoboAereo
 class RoboAereo extends Robo {
     private int altitude;
     private int altitudeMaxima;
-    
+
     // Construtor do RoboAereo
     public RoboAereo(String nome, String direcao, int x, int y, int altitudeMaxima) {
         super(nome, direcao, x, y);
         this.altitude = 0;
         this.altitudeMaxima = altitudeMaxima;
     }
-    
+
     // Método de movimento para cima
     public void subir(int metros) {
         if (altitude + metros <= altitudeMaxima) {
@@ -164,7 +164,7 @@ class RoboAereo extends Robo {
             System.out.println(nomeRobo + " atingiu a altitude máxima!");
         }
     }
-    
+
     // Método de movimento para baixo
     public void descer(int metros) {
         if (altitude - metros >= 0) {
@@ -173,10 +173,10 @@ class RoboAereo extends Robo {
             System.out.println(nomeRobo + " não pode descer abaixo do nível do solo!");
         }
     }
-    
+
     // Sobrescrita do método de exibir posição (inclui altitude)
     @Override
-    public void exibirPosicao(){
+    public void exibirPosicao() {
         System.out.println(nomeRobo + " está em: (" + xPosicao + ", " + yPosicao + ", " + altitude + ")");
     }
 }
@@ -196,11 +196,12 @@ class RoboCargueiro extends RoboAereo {
     public void levarCarga(int peso_carga, int delta_x, int delta_y) {
         if (peso_carga > this.capacidade_carga)
             System.out.println(nomeRobo + " não consegue levar essa carga!");
-        else{
+        else {
             int novo_x = this.xPosicao + delta_x;
             int novo_y = this.yPosicao + delta_y;
             super.mover(delta_x, delta_y);
-            System.out.println(nomeRobo + " levou uma carga de " + capacidade_carga + " kg para a posição (" + novo_x + ", " + novo_y + ")!");
+            System.out.println(nomeRobo + " levou uma carga de " + capacidade_carga + " kg para a posição (" + novo_x
+                    + ", " + novo_y + ")!");
         }
     }
 }
@@ -215,7 +216,7 @@ class RoboFurtivo extends RoboAereo {
         super(nome, direcao, x, y, altitudeMaxima);
         this.modo_furtivo = false; // começa com o modo furtivo desativado
     }
-    
+
     // se o modo furtivo está desativado, ativa; caso contrário, desativa
     public void alternarModoFurtivo() {
         modo_furtivo = !modo_furtivo;
