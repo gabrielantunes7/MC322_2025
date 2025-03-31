@@ -3,16 +3,16 @@ public class Main {
         int x = 10, y = 10, z = 10;
         Ambiente ambiente = new Ambiente(x, y, z);
 
-        RoboTerrestre roboTerra = new RoboTerrestre("Isaias", "Norte", 0, 0, 3);
+        RoboTerrestre roboTerra = new RoboTerrestre("Isaias", "Norte", 0, 0, ambiente,3);
         ambiente.adicionarRobo(roboTerra);
         
-        RoboAereo roboAr = new RoboAereo("Gabriel", "Leste", 3, 7, 6);
+        RoboAereo roboAr = new RoboAereo("Gabriel", "Leste", 3, 7, ambiente, 6);
         ambiente.adicionarRobo(roboAr);
 
-        RoboCargueiro roboCarga = new RoboCargueiro("Carga", "Sul", 1, 2, 5, 100);
+        RoboCargueiro roboCarga = new RoboCargueiro("Carga", "Sul", 1, 2,ambiente, 5, 100);
         ambiente.adicionarRobo(roboCarga);
 
-        RoboFurtivo roboFurtivo = new RoboFurtivo("Furtivo", "Oeste", 5, 5, 10);
+        RoboFurtivo roboFurtivo = new RoboFurtivo("Furtivo", "Oeste", 5, 5, ambiente, 10);
         ambiente.adicionarRobo(roboFurtivo);
 
         CavaloRobo roboCavalo = new CavaloRobo("Cavalo", "Norte", 2, 2, 3, 3, ambiente);
@@ -26,6 +26,7 @@ public class Main {
         roboTerra.exibirPosicao();
         roboTerra.mover(2, 2);
         roboTerra.exibirPosicao();
+        roboTerra.identificarObstaculo();
 
         roboAr.exibirPosicao();
         roboAr.mover(1, -1);
@@ -34,6 +35,7 @@ public class Main {
         roboAr.exibirPosicao();
         roboAr.descer(2);
         roboAr.exibirPosicao();
+        roboAr.identificarObstaculo();
 
         // Testes de falha esperada
         System.out.println("\n--- Testes de Falha Esperada ---");
@@ -54,6 +56,7 @@ public class Main {
         roboCavalo.resetStamina();
         roboCavalo.mover(1, 2);
         roboCavalo.exibirPosicao();
+        roboCavalo.identificarObstaculo();
 
         // Teste da casa mais distante do BispoRobo
         System.out.println("\n--- Teste de Alcance Máximo do BispoRobo ---");
@@ -68,5 +71,6 @@ public class Main {
         roboBispo.exibirPosicao();
         int[] casaMaxima = roboBispo.casaMaisDistante();
         System.out.println(roboBispo.nomeRobo + " pode se mover até: (" + casaMaxima[0] + ", " + casaMaxima[1] + ")");
+        roboBispo.identificarObstaculo();
     }
 }

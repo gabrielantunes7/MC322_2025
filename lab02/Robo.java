@@ -7,7 +7,7 @@ public class Robo {
     protected Ambiente ambiente;
 
     // Construtor da classe Robo
-    public Robo(String nome, String direcaoRobo, int x, int y) {
+    public Robo(String nome, String direcaoRobo, int x, int y, Ambiente ambiente) {
         this.nomeRobo = nome;
         this.direcao = direcaoRobo;
         this.xPosicao = x;
@@ -26,10 +26,17 @@ public class Robo {
         System.out.println(nomeRobo + " está em: (" + xPosicao + ", " + yPosicao + ")");
     }
 
-    // Método que faz com que um robô identifique obstáculos
+
+    // Método para listar todos os obstáculos no ambiente
     public void identificarObstaculo() {
-        System.out.println(nomeRobo + " está verificando obstáculos...");
+        System.out.println("Obstáculos no ambiente:");
+        for (Robo robo : ambiente.getRobos()) {
+            if (!robo.equals(this)) {
+                System.out.println(robo.nomeRobo + " está em: (" + robo.xPosicao + ", " + robo.yPosicao + ")");
+            }
+        }
     }
+
 }
 
 // Classe RoboTerrestre
@@ -38,8 +45,8 @@ class RoboTerrestre extends Robo {
     private int distanciaMaxima;
 
     // Construtor do RoboTerrestre
-    public RoboTerrestre(String nome, String direcao, int x, int y, int distanciaMaxima) {
-        super(nome, direcao, x, y);
+    public RoboTerrestre(String nome, String direcao, int x, int y, Ambiente ambiente, int distanciaMaxima) {
+        super(nome, direcao, x, y, ambiente);
         this.distanciaMaxima = distanciaMaxima;
     }
 
@@ -59,11 +66,11 @@ class RoboTerrestre extends Robo {
 class CavaloRobo extends RoboTerrestre {
     private int stamina;
     private int movimentosRealizados;
-    private Ambiente ambiente;
+    // private Ambiente ambiente;
 
     // Construtor do CavaloRObo
-    public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente) {
-        super(nome, direcao, x, y, distanciaMaxima);
+    public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente){
+        super(nome, direcao, x, y, ambiente, distanciaMaxima);
         this.stamina = stamina;
         this.movimentosRealizados = 0;
         this.ambiente = ambiente;
@@ -110,7 +117,7 @@ class BispoRobo extends RoboTerrestre {
     // Construtor do BispoRobo
     public BispoRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int alcanceMaximoDiagonal,
             Ambiente ambiente) {
-        super(nome, direcao, x, y, distanciaMaxima);
+        super(nome, direcao, x, y, ambiente, distanciaMaxima);
         this.ambiente = ambiente;
         this.alcanceMaximoDiagonal = alcanceMaximoDiagonal;
     }
@@ -150,8 +157,8 @@ class RoboAereo extends Robo {
     private int altitudeMaxima;
 
     // Construtor do RoboAereo
-    public RoboAereo(String nome, String direcao, int x, int y, int altitudeMaxima) {
-        super(nome, direcao, x, y);
+    public RoboAereo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima) {
+        super(nome, direcao, x, y, ambiente);
         this.altitude = 0;
         this.altitudeMaxima = altitudeMaxima;
     }
@@ -187,8 +194,8 @@ class RoboCargueiro extends RoboAereo {
     private int capacidade_carga; // quantos kg de carga consegue levar
 
     // Construtor do RoboCargueiro
-    public RoboCargueiro(String nome, String direcao, int x, int y, int altitudeMaxima, int capacidade) {
-        super(nome, direcao, x, y, altitudeMaxima);
+    public RoboCargueiro(String nome, String direcao, int x, int y, Ambiente ambiente,  int altitudeMaxima, int capacidade) {
+        super(nome, direcao, x, y, ambiente, altitudeMaxima);
         this.capacidade_carga = capacidade;
     }
 
@@ -212,8 +219,8 @@ class RoboFurtivo extends RoboAereo {
     private boolean modo_furtivo; // true se o modo furtivo do robô está ativado
 
     // Construtor do RoboFurtivo
-    public RoboFurtivo(String nome, String direcao, int x, int y, int altitudeMaxima) {
-        super(nome, direcao, x, y, altitudeMaxima);
+    public RoboFurtivo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima) {
+        super(nome, direcao, x, y, ambiente, altitudeMaxima);
         this.modo_furtivo = false; // começa com o modo furtivo desativado
     }
 
