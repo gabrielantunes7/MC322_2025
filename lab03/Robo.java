@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 // Classe base Robo
 public class Robo {
     protected String nomeRobo;
@@ -5,6 +7,7 @@ public class Robo {
     protected int xPosicao;
     protected int yPosicao;
     protected Ambiente ambiente;
+    protected ArrayList<Sensor> sensores; // robôs podem ter sensores
 
     // Construtor da classe Robo
     public Robo(String nome, String direcaoRobo, int x, int y, Ambiente ambiente) {
@@ -35,6 +38,27 @@ public class Robo {
                 System.out.println(robo.nomeRobo + " está em: (" + robo.xPosicao + ", " + robo.yPosicao + ")");
             }
         }
+    }
+
+    public int getPosicaoX() {
+        return xPosicao;
+    }
+
+    public int getPosicaoY() {
+        return yPosicao;
+    }
+
+    // Sensores podem ser adicionados e removidos dos robôs
+    public void adicionarSensor(Sensor s) {
+        sensores.add(s);
+    }
+
+    public void removerSensor(Sensor s) {
+        sensores.remove(s);
+    }
+
+    public ArrayList<Sensor> getSensores() {
+        return sensores;
     }
 
 }
@@ -181,6 +205,9 @@ class RoboAereo extends Robo {
         }
     }
 
+    public int getAltitude() {
+        return altitude;
+    }
     // Sobrescrita do método de exibir posição (inclui altitude)
     @Override
     public void exibirPosicao() {
@@ -231,5 +258,9 @@ class RoboFurtivo extends RoboAereo {
             System.out.println(nomeRobo + " ativou o modo furtivo e agora está invisível, cuidado!");
         else
             System.out.println(nomeRobo + " desativou o modo furtivo e agora não está mais invisível!");
+    }
+
+    public boolean isModoFurtivo() {
+        return modo_furtivo;
     }
 }

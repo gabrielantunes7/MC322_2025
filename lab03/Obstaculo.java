@@ -5,14 +5,15 @@ public class Obstaculo {
     private int altura;
     private TipoObstaculo tipo;
 
-    public Obstaculo(int x1, int y1, int x2, int y2, int altura, TipoObstaculo tipo) {
+    public Obstaculo(int x1, int y1, int x2, int y2, TipoObstaculo tipo) {
         posicaoX1 = x1;
         posicaoY1 = y1;
         posicaoX2 = x2;
         posicaoY2 = y2;
-        this.altura = altura;
+        this.altura = tipo.getAlturaPadrao();
         this.tipo = tipo;
     }
+
 
     public int getPosicaoX1() {
         return posicaoX1;
