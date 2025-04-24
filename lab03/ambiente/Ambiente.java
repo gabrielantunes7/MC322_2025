@@ -1,4 +1,8 @@
+package ambiente;
 import java.util.ArrayList;
+
+import obstaculo.Obstaculo;
+import robos.*;
 
 // Classe Ambiente
 // Usada para representar o ambiente em que objetos da classe robô estão inseridos

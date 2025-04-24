@@ -1,3 +1,4 @@
+package obstaculo;
 public enum TipoObstaculo {
     PAREDE(3, true),
     ARVORE(5, true),

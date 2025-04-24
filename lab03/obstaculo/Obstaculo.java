@@ -1,3 +1,4 @@
+package obstaculo;
 // Classe base Obstaculo
 public class Obstaculo {
     private int posicaoX1, posicaoY1;

@@ -1,3 +1,8 @@
+package sensores;
+
+import robos.Robo;
+import ambiente.Ambiente;
+
 public abstract class Sensor {
     private double alcanceMaximo;
     private Robo robo; // robô ao qual o sensor está ligado

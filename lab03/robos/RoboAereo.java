@@ -1,5 +1,9 @@
+package robos;
 // Classe RoboAereo
-class RoboAereo extends Robo {
+
+import ambiente.Ambiente;
+
+public class RoboAereo extends Robo {
     private int altitude;
     private int altitudeMaxima;
 

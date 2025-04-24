@@ -1,3 +1,8 @@
+import ambiente.Ambiente;
+import obstaculo.*;
+import robos.*;
+import sensores.*;
+
 public class Main {
     public static void main(String[] args) {
         final int x = 10, y = 10, z = 10; // valor imutável do tamanho do ambiente
@@ -78,7 +83,7 @@ public class Main {
         roboBispo.mover(-2,1);
         roboBispo.exibirPosicao();
         int[] casaMaxima = roboBispo.casaMaisDistante();
-        System.out.println(roboBispo.nomeRobo + " pode se mover até: (" + casaMaxima[0] + ", " + casaMaxima[1] + ")");
+        System.out.println(roboBispo.getNomeRobo() + " pode se mover até: (" + casaMaxima[0] + ", " + casaMaxima[1] + ")");
         roboBispo.identificarObstaculo();
 
         // Teste do funcionamento do sensor ultrassônico (nesse caso, instalado no robô furtivo)

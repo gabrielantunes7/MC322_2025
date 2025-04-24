@@ -1,4 +1,8 @@
+package robos;
 import java.util.ArrayList;
+
+import ambiente.Ambiente;
+import sensores.Sensor;
 
 // Classe base Robo
 public class Robo {
@@ -38,6 +42,10 @@ public class Robo {
                 System.out.println(robo.nomeRobo + " está em: (" + robo.xPosicao + ", " + robo.yPosicao + ")");
             }
         }
+    }
+
+    public String getNomeRobo() {
+        return nomeRobo;
     }
 
     public int getPosicaoX() {

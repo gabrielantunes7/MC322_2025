@@ -1,5 +1,12 @@
+package sensores;
 // Classe herdada de Sensor que representa um sensor de proximidade utilizando ondas ultrassônicas
-class SensorUltrassonico extends Sensor {
+
+import ambiente.Ambiente;
+import obstaculo.Obstaculo;
+import robos.Robo;
+import robos.RoboFurtivo;
+
+public class SensorUltrassonico extends Sensor {
     public SensorUltrassonico(double alcanceMaximo, Robo r) {
         super(alcanceMaximo, r);
     }

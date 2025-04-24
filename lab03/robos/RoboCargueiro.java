@@ -1,6 +1,10 @@
+package robos;
 // Classe RoboCargueiro (herdada de RoboAereo)
 // Robô aéreo capaz de levar certa quantidade de carga
-class RoboCargueiro extends RoboAereo {
+
+import ambiente.Ambiente;
+
+public class RoboCargueiro extends RoboAereo {
     private int capacidade_carga; // quantos kg de carga consegue levar
 
     // Construtor do RoboCargueiro

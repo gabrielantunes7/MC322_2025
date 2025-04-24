@@ -1,5 +1,9 @@
+package robos;
 // Classe RoboTerrestre
-class RoboTerrestre extends Robo {
+
+import ambiente.Ambiente;
+
+public class RoboTerrestre extends Robo {
     protected int zPosicao = 0;
     private int distanciaMaxima;
 

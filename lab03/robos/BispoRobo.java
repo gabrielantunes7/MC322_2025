@@ -1,5 +1,9 @@
+package robos;
 // Classe BispoRobo (herdada de RoboTerrestre, movimentação em diagonal)
-class BispoRobo extends RoboTerrestre {
+
+import ambiente.Ambiente;
+
+public class BispoRobo extends RoboTerrestre {
     private int alcanceMaximoDiagonal;
 
     // Construtor do BispoRobo

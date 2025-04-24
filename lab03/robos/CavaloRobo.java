@@ -1,5 +1,9 @@
+package robos;
 // Classe CavaloRobo (herdada de RoboTerrestre, movimentação em L)
-class CavaloRobo extends RoboTerrestre {
+
+import ambiente.Ambiente;
+
+public class CavaloRobo extends RoboTerrestre {
     private int stamina;
     private int movimentosRealizados;
     // private Ambiente ambiente;

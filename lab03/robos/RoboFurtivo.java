@@ -1,6 +1,10 @@
+package robos;
 // Classe RoboFurtivo (herdada de RoboAereo)
 // Robô aéreo capaz de ficar invísivel
-class RoboFurtivo extends RoboAereo {
+
+import ambiente.Ambiente;
+
+public class RoboFurtivo extends RoboAereo {
     private boolean modo_furtivo; // true se o modo furtivo do robô está ativado
 
     // Construtor do RoboFurtivo
