@@ -14,10 +14,14 @@ public abstract class Sensor {
     }
 
     // Cada sensor deve implementar o método monitorar
-    public abstract void monitorar(int x, int y, int altura, Ambiente ambiente);
+    public abstract void monitorar(int x, int y, Ambiente ambiente);
 
     public double getAlcanceMaximo() {
         return alcanceMaximo;
+    }
+
+    public void setAlcanceMaximo(double alcanceMaximo) {
+        this.alcanceMaximo = alcanceMaximo;
     }
 
     public Robo getRobo() {

@@ -1,15 +1,15 @@
 package robos;
-// Classe RoboCargueiro (herdada de RoboAereo)
-// Robô aéreo capaz de levar certa quantidade de carga
 
 import ambiente.Ambiente;
 
+// Classe RoboCargueiro (herdada de RoboAereo)
+// Robô aéreo capaz de levar certa quantidade de carga
 public class RoboCargueiro extends RoboAereo {
     private int capacidade_carga; // quantos kg de carga consegue levar
 
     // Construtor do RoboCargueiro
-    public RoboCargueiro(String nome, String direcao, int x, int y, Ambiente ambiente,  int altitudeMaxima, int capacidade) {
-        super(nome, direcao, x, y, ambiente, altitudeMaxima);
+    public RoboCargueiro(String nome, String direcao, int x, int y, Ambiente ambiente,  int altitudeMaxima, int capacidade, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, altitudeMaxima, material);
         this.capacidade_carga = capacidade;
     }
 

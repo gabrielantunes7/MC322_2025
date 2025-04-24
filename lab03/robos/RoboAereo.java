@@ -8,8 +8,8 @@ public class RoboAereo extends Robo {
     private int altitudeMaxima;
 
     // Construtor do RoboAereo
-    public RoboAereo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima) {
-        super(nome, direcao, x, y, ambiente);
+    public RoboAereo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, material);
         this.altitude = 0;
         this.altitudeMaxima = altitudeMaxima;
     }

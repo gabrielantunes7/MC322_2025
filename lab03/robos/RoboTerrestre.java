@@ -4,12 +4,12 @@ package robos;
 import ambiente.Ambiente;
 
 public class RoboTerrestre extends Robo {
-    protected int zPosicao = 0;
+    protected final int zPosicao = 0;
     private int distanciaMaxima;
 
     // Construtor do RoboTerrestre
-    public RoboTerrestre(String nome, String direcao, int x, int y, Ambiente ambiente, int distanciaMaxima) {
-        super(nome, direcao, x, y, ambiente);
+    public RoboTerrestre(String nome, String direcao, int x, int y, Ambiente ambiente, int distanciaMaxima, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, material);
         this.distanciaMaxima = distanciaMaxima;
     }
 

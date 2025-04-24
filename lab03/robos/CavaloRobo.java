@@ -9,11 +9,10 @@ public class CavaloRobo extends RoboTerrestre {
     // private Ambiente ambiente;
 
     // Construtor do CavaloRObo
-    public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente){
-        super(nome, direcao, x, y, ambiente, distanciaMaxima);
+    public CavaloRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int stamina, Ambiente ambiente, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, distanciaMaxima, material);
         this.stamina = stamina;
         this.movimentosRealizados = 0;
-        this.ambiente = ambiente;
     }
 
     // Sobrescrita do método de movimento (em L, como no Xadrez)

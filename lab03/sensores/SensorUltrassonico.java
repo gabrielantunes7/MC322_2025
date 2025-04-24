@@ -14,7 +14,7 @@ public class SensorUltrassonico extends Sensor {
     // Detecta obstáculos num ambiente a distância até o eles
     // Recebe a posição do robô que possui o sensor e o ambiente em que estão
     @Override
-    public void monitorar(int x, int y, int altura, Ambiente ambiente) {
+    public void monitorar(int x, int y, Ambiente ambiente) {
         // Detecta obstáculos
         for (Obstaculo o: ambiente.getObstaculos()) {
             double distancia_1 = Math.sqrt((Math.pow(o.getPosicaoX1() - x, 2) + Math.pow(o.getPosicaoY1() - y, 2)));

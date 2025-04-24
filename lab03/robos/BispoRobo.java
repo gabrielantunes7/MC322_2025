@@ -8,9 +8,8 @@ public class BispoRobo extends RoboTerrestre {
 
     // Construtor do BispoRobo
     public BispoRobo(String nome, String direcao, int x, int y, int distanciaMaxima, int alcanceMaximoDiagonal,
-            Ambiente ambiente) {
-        super(nome, direcao, x, y, ambiente, distanciaMaxima);
-        this.ambiente = ambiente;
+            Ambiente ambiente, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, distanciaMaxima, material);
         this.alcanceMaximoDiagonal = alcanceMaximoDiagonal;
     }
 

@@ -19,7 +19,8 @@ public class Ambiente{
         largura = umaLargura;
         altura = umaAltura;
         altitude = umaAltitude;
-        this.robos = new ArrayList<>();
+        this.robos = new ArrayList<Robo>();
+        this.obstaculos = new ArrayList<Obstaculo>();
     }
 
     // Adiciona um robô ao ambiente (coloca-o no ArrayList)
@@ -70,7 +71,14 @@ public class Ambiente{
             return false;
     }
 
+    // Verifica se há colisões entre robôs e obstáculos
     public void detectarColisoes(){
-
+        for (Robo r: robos)
+            for (Obstaculo o: obstaculos){
+                if (r.getPosicaoX() >= o.getPosicaoX1() && r.getPosicaoX() <= o.getPosicaoX2() &&
+                    r.getPosicaoY() >= o.getPosicaoY1() && r.getPosicaoY() <= o.getPosicaoY2()){
+                    System.out.println("Colisão detectada entre " + r.getNomeRobo() + " e um obstáculo do tipo " + o.getTipo() + "!");
+                }
+            }
     }
 }

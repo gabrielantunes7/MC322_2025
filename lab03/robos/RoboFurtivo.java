@@ -8,8 +8,8 @@ public class RoboFurtivo extends RoboAereo {
     private boolean modo_furtivo; // true se o modo furtivo do robô está ativado
 
     // Construtor do RoboFurtivo
-    public RoboFurtivo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima) {
-        super(nome, direcao, x, y, ambiente, altitudeMaxima);
+    public RoboFurtivo(String nome, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima, TipoMaterial material) {
+        super(nome, direcao, x, y, ambiente, altitudeMaxima, material);
         this.modo_furtivo = false; // começa com o modo furtivo desativado
     }
 
