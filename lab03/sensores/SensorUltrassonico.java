@@ -27,7 +27,7 @@ public class SensorUltrassonico extends Sensor {
                 menor_distancia = distancia_2;
 
             if (menor_distancia <= getAlcanceMaximo())
-                System.out.println("Sensor Ultrassonico detectou obstaculo do tipo " + o.getTipo() + "a " + String.format("%.2f", menor_distancia) + " metros de distancia.");
+                System.out.println("Sensor Ultrassônico detectou obstáculo do tipo " + o.getTipo() + " a " + String.format("%.2f", menor_distancia) + " metros de distância.");
         }
 
         // Detecta robôs
@@ -42,8 +42,7 @@ public class SensorUltrassonico extends Sensor {
             double distancia = Math.sqrt((Math.pow(r.getPosicaoX() - x, 2) + Math.pow(r.getPosicaoY() - y, 2)));
 
             if (distancia <= getAlcanceMaximo())
-                System.out.println("Sensor Ultrassonico detectou robo do tipo " + r.getClass().getSimpleName() + " a " + String.format("%.2f", distancia) + " metros de distancia.");
+                System.out.println("Sensor Ultrassônico detectou " + r.getNomeRobo() + " a " + String.format("%.2f", distancia) + " metros de distância.");
         }
     }
 }
-

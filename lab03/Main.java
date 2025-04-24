@@ -60,10 +60,12 @@ public class Main {
         roboAr.exibirPosicao();
 
         // Testes de falha esperada
-        System.out.println("\n--- Testes de Falha Esperada ---");
+        System.out.println("\n--- Testes de Falha Esperada de Movimentação ---");
         roboTerra.mover(10, 10); // Deve falhar, ultrapassa distância máxima
         roboAr.subir(10); // Deve falhar, ultrapassa altitude máxima
         roboAr.descer(10); // Deve falhar, altitude abaixo de 0
+        roboFurtivo.mover(10, 10); // Deve falhar, ultrapassa limites do ambiente
+
 
         // Teste de stamina do CavaloRobo
         System.out.println("\n--- Testes de Stamina do CavaloRobo ---");
@@ -114,6 +116,7 @@ public class Main {
         // Teste do funcionamento do sensor ultrassônico (nesse caso, instalado no robô furtivo 2)
         System.out.println("\n--- Teste do Sensor Ultrassônico (no RoboFurtivo2) ---");
         roboFurtivo2.usarSensor(ultra1);
+        roboFurtivo2.usarSensor(ultra2);
 
         // Teste do funcionamento do sensor magnético (nesse caso, instalado no robô furtivo 2)
         System.out.println("\n--- Teste do Sensor Magnético (no RoboFurtivo2) ---");

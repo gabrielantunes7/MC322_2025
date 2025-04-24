@@ -7,7 +7,7 @@ import ambiente.Ambiente;
 // Classe SensorMagnetico
 // Sensor que detecta robôs metálicos
 // Vantagens em relação ao sensor ultrassônico: amplia o alcance quando detecta robôs metálicos e consegue detectar robôs furtivos
-// Desvantagens: não detecta obstáculos
+// Desvantagens: não detecta obstáculos, não identifica os robôs por seus nomes
 public class SensorMagnetico extends Sensor{
     private double multiplicador; // multiplicador do alcance máximo quando detecta um robô metálico
 
