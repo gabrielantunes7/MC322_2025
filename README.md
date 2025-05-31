@@ -11,24 +11,15 @@ Instruções para a execução dos laboratórios:
 
 
 Laboratório 1:
-
 Compilar os arquivos: javac *.java
-
 Rodar a Main: java Main
 
-
 Laboratório 2:
-
 Igual ao Laboratório 1
 
-
 Laboratório 3:
-
 Compilar os arquivos e rodar a Main: igual ao laboratórios anteriores
-
 Rodar o Teste Interativo: java TesteInterativo
 
-
 Laboratório 4:
-
 Igual ao Laboratório 3
