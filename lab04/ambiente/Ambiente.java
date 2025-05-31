@@ -1,8 +1,9 @@
 package ambiente;
 
 import java.util.ArrayList;
-import entidade.*;
 import excecoes.*;
+import interfaces.Entidade;
+import interfaces.TipoEntidade;
 import obstaculo.Obstaculo;
 import robos.*;
 import sensores.Sensor;

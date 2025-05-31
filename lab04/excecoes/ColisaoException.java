@@ -1,6 +1,6 @@
 package excecoes;
 
-import entidade.*;
+import interfaces.TipoEntidade;
 
 public class ColisaoException extends Exception {
     public ColisaoException(TipoEntidade tipo) {

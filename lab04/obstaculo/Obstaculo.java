@@ -1,6 +1,7 @@
 package obstaculo;
 
-import entidade.*;
+import interfaces.Entidade;
+import interfaces.TipoEntidade;
 
 // Classe base Obstaculo
 public class Obstaculo implements Entidade {

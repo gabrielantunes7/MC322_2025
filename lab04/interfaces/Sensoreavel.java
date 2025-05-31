@@ -1,4 +1,4 @@
-package sensoreavel;
+package interfaces;
 
 import robos.Robo;
 import excecoes.RoboDesligadoException;

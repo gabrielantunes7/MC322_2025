@@ -1,13 +1,14 @@
 package robos;
 
 import ambiente.Ambiente;
-import comunicavel.Comunicavel;
 import excecoes.RoboDesligadoException;
+import interfaces.Comunicavel;
+import comunicacao.*;
 
 // Classe RoboAereo
 public class RoboAereo extends Robo implements Comunicavel {
     private int altitudeMaxima;
-    private String mensagem;
+    private Mensagem mensagem;
 
     // Construtor
     public RoboAereo(String id, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima, TipoMaterial material) {
@@ -68,23 +69,24 @@ public class RoboAereo extends Robo implements Comunicavel {
 
     // 🔥 Comunicação
     @Override
-    public void enviarMensagem(Comunicavel receptor, String mensagem) throws RoboDesligadoException {
+    public void enviarMensagem(Mensagem mensagem, CentralComunicacao central) throws RoboDesligadoException {
         if (!isLigado()) {
             throw new RoboDesligadoException(this);
         }
-        receptor.receberMensagem(mensagem);
+        mensagem.getReceptor().receberMensagem(mensagem);
+        central.registrarMensagem(mensagem);
     }
 
     @Override
-    public void receberMensagem(String mensagem) throws RoboDesligadoException {
+    public void receberMensagem(Mensagem mensagem) throws RoboDesligadoException {
         if (!isLigado()) {
             throw new RoboDesligadoException(this);
         }
         this.mensagem = mensagem;
-        System.out.println(getId() + " recebeu a mensagem: " + mensagem);
+        System.out.println(getId() + " recebeu a mensagem: " + mensagem.getConteudo() + " de " + mensagem.getRemetente().getId());
     }
 
-    public String getMensagem() {
+    public Mensagem getMensagem() {
         return mensagem;
     }
 

@@ -1,4 +1,4 @@
-package entidade;
+package interfaces;
 
 public enum TipoEntidade {
     ROBO("robô"),

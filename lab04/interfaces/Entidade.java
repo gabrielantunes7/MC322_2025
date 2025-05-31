@@ -1,4 +1,4 @@
-package entidade;
+package interfaces;
 
 public interface Entidade {
     public int getX();

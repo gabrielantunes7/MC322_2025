@@ -3,10 +3,11 @@ package robos;
 import java.util.ArrayList;
 
 import ambiente.Ambiente;
-import entidade.*;
 import excecoes.*;
+import interfaces.Entidade;
+import interfaces.Sensoreavel;
+import interfaces.TipoEntidade;
 import sensores.*;
-import sensoreavel.Sensoreavel;
 
 
 public abstract class Robo implements Entidade, Sensoreavel {

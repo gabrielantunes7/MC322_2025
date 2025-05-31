@@ -1,17 +1,18 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import ambiente.Ambiente;
+import interfaces.Comunicavel;
 import obstaculo.*;
 import robos.*;
 import sensores.*;
-import entidade.*;
+import comunicacao.*;
 import excecoes.*;
-import comunicavel.Comunicavel;
 
 public class TesteInterativo {
     private static Scanner scanner = new Scanner(System.in);
     private static Ambiente ambiente;
     private static ArrayList<Robo> robos = new ArrayList<>();
+    private static CentralComunicacao central;
 
     public static void main(String[] args) {
         try {
@@ -115,30 +116,31 @@ public class TesteInterativo {
         System.out.println("\n=== Comunicação entre Robôs ===");
         try {
             Robo emissor = selecionarRobo();
-            if (!(emissor instanceof Comunicavel)) {
-                System.out.println("Este robô não possui capacidade de comunicação!");
-                return;
-            }
+            if (!(emissor instanceof Comunicavel))
+                throw new RoboIncomunicavelException(emissor.getId());
 
             Robo receptor = selecionarRobo();
-            if (!(receptor instanceof Comunicavel)) {
-                System.out.println("O robô receptor não possui capacidade de comunicação!");
-                return;
-            }
+            if (!(receptor instanceof Comunicavel))
+                throw new RoboIncomunicavelException(receptor.getId());
 
             System.out.print("Digite a mensagem: ");
             scanner.nextLine(); // Limpar buffer
-            String mensagem = scanner.nextLine();
+            Mensagem mensagem = new Mensagem((Comunicavel) emissor, scanner.nextLine(), (Comunicavel) receptor);
 
-            ((Comunicavel)emissor).enviarMensagem((Comunicavel)receptor, mensagem);
+            ((Comunicavel)emissor).enviarMensagem(mensagem, central);
 
-        } catch (Exception e) {
+        } catch (RoboIncomunicavelException e) {
             System.out.println("Erro na comunicação: " + e.getMessage());
+        } catch (RoboDesligadoException e) {
+            System.out.println("Erro: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
         }
     }
 
     private static void inicializarAmbiente() {
         ambiente = new Ambiente(10, 10, 10);
+        central = new CentralComunicacao();
 
         // Criar e adicionar robôs
         robos.add(new RoboTerrestre("RT-1", "Norte", 0, 0, ambiente, 5, TipoMaterial.METALICO));

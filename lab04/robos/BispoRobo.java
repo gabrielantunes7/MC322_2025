@@ -4,7 +4,6 @@ import ambiente.Ambiente;
 import sensores.SensorMovimentoDiagonal;
 import sensores.SensorAlcanceDiagonal;
 import sensores.SensorLimiteAmbiente;
-import excecoes.ForaDosLimitesException;
 
 // Classe BispoRobo
 public class BispoRobo extends RoboTerrestre {

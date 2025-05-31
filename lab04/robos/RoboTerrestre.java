@@ -2,7 +2,6 @@ package robos;
 
 import ambiente.Ambiente;
 import excecoes.RoboTerrestreNaoVoaException;
-import robos.TipoMaterial;
 
 // Classe RoboTerrestre
 public class RoboTerrestre extends Robo {
