@@ -179,7 +179,7 @@ java TesteAutomatizado
 
 ---
 
-Desenvolvido por: **Isaias Junio Jarcem**  
+Desenvolvido por: **Gabriel Mattias Antunes e Isaias Junio Jarcem**  
 UNIVERSIDADE ESTADUAL DE CAMPINAS – Engenharia de Computação  
 MC322 – Programação Orientada a Objetos
 
