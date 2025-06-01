@@ -144,7 +144,7 @@ Disponível em `Main.java`, com as seguintes funcionalidades:
 
 ## 🧱 Diagrama UML
 
-Veja o arquivo: [`diagrama_lab4.png`](./lab04/diagrama_lab4.png)
+Veja o arquivo: [`diagrama_lab4.png`](./diagrama_lab4.png)
 
 Inclui:
 - Interfaces
