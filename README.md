@@ -17,7 +17,7 @@ Instruções para a execução dos laboratórios:
         Igual ao Laboratório 1
 
     Laboratório 3:
-        Compilar os arquivos e rodar a Main: igual ao laboratórios anteriores
+        Compilar os arquivos e rodar a Main: igual aos laboratórios anteriores
         Rodar o Teste Interativo: java TesteInterativo
 
     Laboratório 4:
