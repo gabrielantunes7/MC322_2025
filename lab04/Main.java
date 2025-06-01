@@ -130,6 +130,7 @@ public class Main {
             System.out.println("1. Visualizar Ambiente");
             System.out.println("2. Adicionar Obstáculo");
             System.out.println("3. Verificar Colisões");
+            System.out.println("4. Executar Sensores");
             System.out.println("0. Voltar");
 
             System.out.print("\nEscolha uma opção: ");
@@ -144,6 +145,9 @@ public class Main {
                     break;
                 case 3:
                     ambiente.detectarColisoes();
+                    break;
+                case 4:
+                    ambiente.executarSensores();
                     break;
                 case 0:
                     return;
