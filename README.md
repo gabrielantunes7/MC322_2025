@@ -5,9 +5,9 @@ Este projeto é uma simulação de um ambiente tridimensional com robôs intelig
 ---
 
 ## 🖥️ IDEs Utilizadas
-  -IDEA IntelliJ
+  - IDEA IntelliJ
   
-  -Microsoft VSCode
+  - Microsoft VSCode
 ## 📌 Objetivos do Lab
 
 - Aplicar **interfaces e polimorfismo**
