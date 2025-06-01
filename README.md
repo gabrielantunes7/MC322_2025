@@ -5,9 +5,9 @@ Este projeto é uma simulação de um ambiente tridimensional com robôs intelig
 ---
 
 ## 🖥️ IDEs Utilizadas
-  -IDEA Intelijj
+  -IDEA IntelliJ
   
-  -Microsoft VsCode
+  -Microsoft VSCode
 ## 📌 Objetivos do Lab
 
 - Aplicar **interfaces e polimorfismo**
@@ -184,6 +184,6 @@ java TesteAutomatizado
 ---
 
 Desenvolvido por: **Gabriel Mattias Antunes e Isaias Junio Jarcem**  
-UNIVERSIDADE ESTADUAL DE CAMPINAS – Engenharia de Computação  
+Universidade Estadual de Campinas – Engenharia de Computação  
 MC322 – Programação Orientada a Objetos
 
