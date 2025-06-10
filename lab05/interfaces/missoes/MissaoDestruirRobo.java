@@ -1,11 +1,13 @@
 package interfaces.missoes;
 
-import robos.RoboFurtivo;
+import robos.RoboAssassino;
 import robos.Robo;
 import ambiente.Ambiente;
 import excecoes.RoboIncompativelException;
 import excecoes.RoboNaoEncontradoException;
 
+// Missão para destruir um robô alvo
+// Somente pode ser executada por um RoboAssassino
 public class MissaoDestruirRobo implements Missao {
     private String idRobo;
     private String motivo;
@@ -27,13 +29,13 @@ public class MissaoDestruirRobo implements Missao {
     public String getDescricaoMissao() {
         return "Destruir o robô com ID: " + idRobo + " por motivo: " + motivo;
     }
-    
+
     @Override
     public void executar(Robo r, Ambiente ambiente) throws Exception {
-        if (!(r instanceof RoboFurtivo)) 
-            throw new RoboIncompativelException("Furtivo");
+        if (!(r instanceof RoboAssassino)) 
+            throw new RoboIncompativelException("Assassino");
 
-        RoboFurtivo furtivo = (RoboFurtivo) r;
+        RoboAssassino assassino = (RoboAssassino) r;
         boolean roboEncontrado = ambiente.getRobos().stream()
             .anyMatch(robo -> robo.getId().equals(idRobo));
         if(!roboEncontrado) 
@@ -44,9 +46,7 @@ public class MissaoDestruirRobo implements Missao {
             .findFirst()
             .orElseThrow(() -> new RoboNaoEncontradoException(idRobo));
 
-        if (!(furtivo.isModoFurtivo()))
-            furtivo.alternarModoFurtivo();
-        furtivo.moverPara(roboAlvo.getX(), roboAlvo.getY(), roboAlvo.getZ());
+        assassino.moverPara(roboAlvo.getX(), roboAlvo.getY(), roboAlvo.getZ());
         roboAlvo.destruirRobo();
     }
 }
