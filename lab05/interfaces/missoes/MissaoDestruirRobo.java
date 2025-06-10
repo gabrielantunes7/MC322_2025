@@ -1,4 +1,4 @@
-package missoes;
+package interfaces.missoes;
 
 import robos.RoboFurtivo;
 import robos.Robo;
@@ -6,7 +6,7 @@ import ambiente.Ambiente;
 import excecoes.RoboIncompativelException;
 import excecoes.RoboNaoEncontradoException;
 
-public class MissaoDestruirRobo extends Missao {
+public class MissaoDestruirRobo implements Missao {
     private String idRobo;
     private String motivo;
 
@@ -23,6 +23,11 @@ public class MissaoDestruirRobo extends Missao {
         return motivo;
     }
 
+    @Override
+    public String getDescricaoMissao() {
+        return "Destruir o robô com ID: " + idRobo + " por motivo: " + motivo;
+    }
+    
     @Override
     public void executar(Robo r, Ambiente ambiente) throws Exception {
         if (!(r instanceof RoboFurtivo)) 

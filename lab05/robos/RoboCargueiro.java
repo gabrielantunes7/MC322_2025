@@ -4,19 +4,14 @@ import ambiente.Ambiente;
 import excecoes.CargaExcessivaException;
 import excecoes.RoboDesligadoException;
 import interfaces.Carregavel;
-import missoes.Missao;
-import missoes.MissaoLevarCarga;
-import interfaces.AgenteInteligente;
 import excecoes.ForaDosLimitesException;
 
-public class RoboCargueiro extends RoboAereo implements Carregavel, AgenteInteligente {
+public class RoboCargueiro extends RoboAereo implements Carregavel{
     private int capacidadeCarga;
-    private MissaoLevarCarga missao;
 
     public RoboCargueiro(String id, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima, int capacidade, TipoMaterial material) {
         super(id, direcao, x, y, ambiente, altitudeMaxima, material);
         this.capacidadeCarga = capacidade;
-        this.missao = null; // Inicialmente sem missão
     }
 
     @Override
@@ -63,19 +58,5 @@ public class RoboCargueiro extends RoboAereo implements Carregavel, AgenteInteli
     @Override
     public char getRepresentacao() {
         return 'C'; // 'C' de Cargueiro
-    }
-
-    public void receberMissao(MissaoLevarCarga missao) {
-        this.missao = missao;
-        System.out.println(getId() + " recebeu a missão de levar carga: " + missao.getCarga() + " kg para (" + missao.getXChegada() + ", " + missao.getYChegada() + ", " + missao.getZChegada() + ")");
-    }
-
-    public MissaoLevarCarga getMissao() {
-        return missao;
-    }
-
-    @Override
-    public void executarMissao(Missao missao) throws Exception {
-        missao.executar(this, ambiente);
     }
 }

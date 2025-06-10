@@ -2,20 +2,15 @@ package robos;
 
 import ambiente.Ambiente;
 import excecoes.RoboDesligadoException;
-import interfaces.AgenteInteligente;
-import missoes.Missao;
-import missoes.MissaoDestruirRobo;
 
 // Classe RoboFurtivo (herda de RoboAereo)
-public class RoboFurtivo extends RoboAereo implements AgenteInteligente {
+public class RoboFurtivo extends RoboAereo {
     private boolean modoFurtivo; // true se está invisível
-    private MissaoDestruirRobo missao;
 
     // Construtor
     public RoboFurtivo(String id, String direcao, int x, int y, Ambiente ambiente, int altitudeMaxima, TipoMaterial material) {
         super(id, direcao, x, y, ambiente, altitudeMaxima, material);
         this.modoFurtivo = false; // começa desativado
-        this.missao = null; // Inicialmente sem missão
     }
 
     // 🔥 Alterna o modo furtivo
@@ -41,15 +36,6 @@ public class RoboFurtivo extends RoboAereo implements AgenteInteligente {
         // Simples: alterna o modo furtivo como sua tarefa
         alternarModoFurtivo();
         System.out.println(getId() + " executou sua tarefa de alternar modo furtivo.");
-    }
-
-    @Override
-    public void executarMissao(Missao missao) throws Exception {
-        missao.executar(this, ambiente);
-    }
-
-    public Missao getMissao() {
-        return missao;
     }
     
     @Override
