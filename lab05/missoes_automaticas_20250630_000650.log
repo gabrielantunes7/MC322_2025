@@ -1,0 +1,25 @@
+================================================================================
+LOG DE EXECUÇÃO DE MISSÕES AUTOMÁTICAS
+Data/Hora de Início: 30/06/2025 00:06:50
+================================================================================
+
+=== Execução de Missões Automáticas ===
+1. Executar Missão de Construção
+2. Executar Missão de Destruir Robô
+3. Executar Todas as Missões
+4. Listar Sensores das Missões
+0. Voltar
+
+Escolha uma opção: 
+============================================================
+EXECUTANDO MISSÕES DE DESTRUIÇÃO
+============================================================
+
+>>> Iniciando missão de destruição com AS01
+Status inicial do robô: RoboAssassino: AS01, Direção: Norte, Posição: (1, 1, 0), Alvo: RF01
+✓ Missão de destruição executada com sucesso!
+Status final do robô: RoboAssassino: AS01, Direção: NORTE, Posição: (3, 2, 0), Alvo: RF01
+
+================================================================================
+Data/Hora de Finalização: 30/06/2025 00:06:54
+================================================================================

@@ -1,0 +1,41 @@
+================================================================================
+LOG DE EXECUÇÃO DE MISSÕES AUTOMÁTICAS
+Data/Hora de Início: 30/06/2025 00:06:10
+================================================================================
+
+=== Execução de Missões Automáticas ===
+1. Executar Missão de Construção
+2. Executar Missão de Destruir Robô
+3. Executar Todas as Missões
+4. Listar Sensores das Missões
+0. Voltar
+
+Escolha uma opção: 
+============================================================
+SENSORES UTILIZADOS NAS MISSÕES AUTOMÁTICAS
+============================================================
+
+>>> MISSÃO DE CONSTRUÇÃO
+Robô: AC01 (RoboAutomatoConstrutor)
+├─ Sensor: SensorLimiteAmbiente
+├─ Alcance: 1.7976931348623157E308 metros
+└─ Função: Detectar obstáculos/entidades durante navegação para posição alvo
+
+>>> MISSÃO DE DESTRUIÇÃO
+Robô: AS01 (RoboAssassino)
+├─ Sensor: SensorLimiteAmbiente
+├─ Alcance: 1.7976931348623157E308 metros
+└─ Função: Detectar e rastrear o robô alvo durante perseguição
+
+----------------------------------------
+RESUMO COMPARATIVO DOS SENSORES
+----------------------------------------
+MISSÃO               | SENSOR          | ALCANCE    | ESPECIALIZAÇÃO      
+----------------------------------------
+Construção           | SensorFrontal   | 5.0m       | Navegação segura    
+Destruição           | SensorFrontal   | 8.0m       | Rastreamento alvo   
+----------------------------------------
+
+================================================================================
+Data/Hora de Finalização: 30/06/2025 00:06:21
+================================================================================

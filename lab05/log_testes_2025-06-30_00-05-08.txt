@@ -1,0 +1,304 @@
+=================================================
+        LOG DE TESTES AUTOMATIZADOS
+=================================================
+Data/Hora de início: Mon Jun 30 00:05:08 BRT 2025
+Nome do arquivo: log_testes_2025-06-30_00-05-08.txt
+=================================================
+
+Iniciando Testes Automatizados do Sistema de Robôs
+
+
+✅ SUCESSO: Inicialização do ambiente
+    O teste foi concluído com êxito!
+
+=== Teste de Inicialização ===
+
+✅ SUCESSO: Ambiente foi criado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Lista de robôs foi criada
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Quantidade correta de robôs
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RoboAutomatoConstrutor foi criado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RoboAssassino foi criado
+    O teste foi concluído com êxito!
+
+=== Teste de Estado dos Robôs ===
+
+✅ SUCESSO: RT-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RT-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RT-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RA-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RA-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RA-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RC-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RC-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RC-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RF-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RF-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RF-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CV-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CV-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CV-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: BP-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: BP-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: BP-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CONSTRUTOR-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CONSTRUTOR-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: CONSTRUTOR-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: ASSASSINO-1 - Estado forçado para desligado
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: ASSASSINO-1 - Ligar robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: ASSASSINO-1 - Desligar robô
+    O teste foi concluído com êxito!
+
+=== Teste de Funcionalidades Específicas ===
+
+✅ SUCESSO: RoboAereo - Subir
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RoboFurtivo - Modo Furtivo
+    O teste foi concluído com êxito!
+
+=== Teste de Sensores ===
+
+✅ SUCESSO: RoboFurtivo tem sensores
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: RoboFurtivo tem 2 sensores
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Monitoramento do sensor SensorUltrassonico
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Monitoramento do sensor SensorMagnetico
+    O teste foi concluído com êxito!
+
+=== Testando Sistema de Comunicação ===
+Iniciando teste do sistema de comunicação entre robôs...
+
+Robô emissor selecionado: RT-1
+Robô receptor selecionado: RA-1
+
+Ligando os robôs para comunicação...
+Preparando mensagem de teste...
+Enviando mensagem...
+
+✅ SUCESSO: Envio de mensagem bem-sucedido
+    O teste foi concluído com êxito!
+
+=== Testando Funcionalidades do Mapa ===
+
+✅ SUCESSO: Mapa foi inicializado corretamente
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Largura do mapa é válida
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Altura do mapa é válida
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Altitude do mapa é válida
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Posição (0,0,0) está dentro dos limites
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Posição (14,14,9) está dentro dos limites
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Posição (-1,0,0) está fora dos limites
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Posição (15,15,10) está fora dos limites
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Verificação de ocupação de posição funciona
+    O teste foi concluído com êxito!
+
+=== Testando Adições no Mapa ===
+
+✅ SUCESSO: Adição de obstáculo
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Obstáculo está na lista de obstáculos
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Adição de robô
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Robô está na lista de robôs
+    O teste foi concluído com êxito!
+
+=== Testando Detecção de Colisões ===
+
+✅ SUCESSO: Detecção de colisão com obstáculo
+    O teste foi concluído com êxito!
+
+=== Teste de Colisões ===
+
+✅ SUCESSO: Detecção de colisões
+    O teste foi concluído com êxito!
+
+=== Testando Sistema de Missões ===
+
+Testando MissaoConstrutor...
+Posição inicial do construtor: (12,12)
+Posição alvo escolhida: (8,10)
+
+✅ SUCESSO: Missão foi atribuída ao construtor
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Tipo correto de missão atribuída
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Descrição da missão está correta
+    O teste foi concluído com êxito!
+Ligando o construtor e executando missão...
+Árvore encontrada em (8,9)
+Árvore encontrada em (9,9)
+
+✅ SUCESSO: Execução da MissaoConstrutor
+    O teste foi concluído com êxito!
+✅ Árvore foi plantada com sucesso!
+
+Testando MissaoDestruirRobo...
+
+✅ SUCESSO: Missão foi atribuída ao assassino
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Tipo correto de missão atribuída
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Descrição da missão de destruição está correta
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: ID do robô alvo está correto
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Motivo da missão está correto
+    O teste foi concluído com êxito!
+
+=== Testando Agentes Inteligentes ===
+
+Testando RoboAutomatoConstrutor...
+Estado atual do construtor: LIGADO
+
+✅ SUCESSO: Construtor é instância de AgenteInteligente
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Construtor tem sensor frontal
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Definição de posição alvo funciona
+    O teste foi concluído com êxito!
+⚠️ Construtor estava ligado, forçando estado DESLIGADO...
+
+✅ SUCESSO: Estado inicial do construtor (DESLIGADO)
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Ligar construtor
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Desligar construtor após teste
+    O teste foi concluído com êxito!
+
+Testando RoboAssassino...
+Estado atual do assassino: DESLIGADO
+
+✅ SUCESSO: Assassino é instância de AgenteInteligente
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Assassino tem sensor frontal
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Definição de robô alvo funciona
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Flag de alvo definido está correta
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Estado inicial do assassino (DESLIGADO)
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Ligar assassino
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Desligar assassino após teste
+    O teste foi concluído com êxito!
+
+=== Teste de Exceções ===
+
+✅ SUCESSO: Exceção RoboDesligadoException
+    O teste foi concluído com êxito!
+
+✅ SUCESSO: Exceção para robô inexistente capturada
+    O teste foi concluído com êxito!
+
+====================================
+     Resumo Final dos Testes
+====================================
+📊 Estatísticas:
+    Total de testes executados: 76
+    ✅ Testes bem-sucedidos: 76
+    ❌ Testes que falharam: 0
+
+📈 Taxa de sucesso: 100,00%
+
+🎉 Parabéns! Todos os testes foram bem-sucedidos!
+🚀 O sistema de robôs com missões está funcionando perfeitamente!
+====================================
+
+=================================================
+Data/Hora de término: Mon Jun 30 00:05:11 BRT 2025
+=================================================
