@@ -10,6 +10,8 @@ Simulador 3D de robôs autônomos com diferentes capacidades, desenvolvido em Ja
 
 * Exercitar **interfaces** e **polimorfismo** em Java
 * Implementar **herança múltipla** via interfaces
+* Implementar **Agentes Inteligentes**
+* Gerar relatórios LOGS
 * Criar e lançar **exceções personalizadas**
 * Integrar **sensores** e definir **tarefas específicas**
 * Desenvolver um **menu interativo** para controle e monitoramento de robôs
