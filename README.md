@@ -1,20 +1,26 @@
 # 🤖 Simulador de Robôs Inteligentes
 
-Este projeto é uma simulação de um ambiente tridimensional com robôs inteligentes, cada um com capacidades distintas, implementado em Java como parte da disciplina MC322 (Programação Orientada a Objetos).
+&#x20;
+
+Simulador 3D de robôs autônomos com diferentes capacidades, desenvolvido em Java para a disciplina **MC322 – Programação Orientada a Objetos** (UNICAMP).
 
 ---
 
-## 🖥️ IDEs Utilizadas
-  - IDEA IntelliJ
-  
-  - Microsoft VSCode
-## 📌 Objetivos do Lab
+## 🚀 Objetivos
 
-- Aplicar **interfaces e polimorfismo**
-- Utilizar **herança múltipla via interfaces**
-- Criar e lançar **exceções personalizadas**
-- Integrar **sensores e tarefas robóticas específicas**
-- Desenvolver um **menu interativo** para controlar os robôs
+* Exercitar **interfaces** e **polimorfismo** em Java
+* Implementar **herança múltipla** via interfaces
+* Criar e lançar **exceções personalizadas**
+* Integrar **sensores** e definir **tarefas específicas**
+* Desenvolver um **menu interativo** para controle e monitoramento de robôs
+
+---
+
+## 🛠️ Tecnologias & IDEs
+
+* **Linguagem:** Java SE 8+
+* **IDE:** IntelliJ IDEA, Visual Studio Code
+* **Ferramentas:** Maven (opcional), JUnit 5 (testes unitários)
 
 ---
 
@@ -22,168 +28,140 @@ Este projeto é uma simulação de um ambiente tridimensional com robôs intelig
 
 ```
 lab04/
-├── Main.java
-├── TesteAutomatizado.java
-├── ambiente/                 # Classe Ambiente (mapa 3D, controle de entidades)
-├── comunicacao/              # Central de comunicação entre robôs
-├── excecoes/                 # Exceções personalizadas
-├── interfaces/               # Interfaces comportamentais e estruturais
-├── obstaculo/                # Tipos de obstáculos e suas características
-├── robos/                    # Classes dos robôs com especializações
-├── sensores/                # Sensores específicos usados por robôs
+├── Main.java               # Entrada, menu interativo
+├── TesteAutomatizado.java  # Testes JUnit de movimentação e exceções
+├── ambiente/               # Gerenciamento do mapa 3D (classe Ambiente)
+├── comunicacao/            # CentralComunicacao e histórico de mensagens
+├── excecoes/               # Exceções personalizadas
+├── interfaces/             # Interfaces (Entidade, Comunicavel, etc.)
+├── obstaculo/              # Definições de TipoObstaculo e suas características
+├── robos/                  # Implementação de robôs (RoboTerrestre, etc.)
+└── sensores/               # Sensores e GerenciadorSensores
 ```
 
 ---
 
 ## 🧠 Interfaces Implementadas
 
-| Interface       | Função                                         | Onde é implementada                     |
-|----------------|------------------------------------------------|------------------------------------------|
-| `Entidade`      | Contrato base para qualquer objeto do ambiente | Todos os robôs e obstáculos              |
-| `Comunicavel`   | Envio e recebimento de mensagens               | Robôs como `RoboFurtivo` e `Cargueiro`   |
-| `Sensoreavel`   | Comportamento sensorial                        | Todos os robôs que usam sensores         |
-| `Carregavel`    | Capacidade de carga                            | `RoboCargueiro`                          |
-| `IBispoRobo`    | Movimento em diagonal                          | `BispoRobo`                              |
-| `ICavaloRobo`   | Movimento em L                                 | `CavaloRobo`                             |
+| Interface     | Descrição                              | Implementação                  |
+| ------------- | -------------------------------------- | ------------------------------ |
+| `Entidade`    | Contrato base para objetos no ambiente | Todos robôs e obstáculos       |
+| `Comunicavel` | Envia e recebe mensagens               | `RoboFurtivo`, `RoboCargueiro` |
+| `Sensoreavel` | Detecção e notificação de sensores     | Robôs com sensores             |
+| `Carregavel`  | Capacidade de transportar carga        | `RoboCargueiro`                |
+| `IBispoRobo`  | Movimento diagonal no plano XY         | `BispoRobo`                    |
+| `ICavaloRobo` | Movimento em L                         | `CavaloRobo`                   |
 
 ---
 
 ## 💥 Exceções Personalizadas
 
-| Exceção                        | Finalidade                                                              |
-|--------------------------------|-------------------------------------------------------------------------|
-| `RoboDesligadoException`       | Ação não permitida com robô desligado                                   |
-| `ColisaoException`             | Tentativa de ocupar espaço já ocupado                                   |
-| `ForaDosLimitesException`      | Movimento fora dos limites do ambiente                                  |
-| `MoverObstaculoException`      | Tentativa de mover um obstáculo                                         |
-| `EnergiaInsuficienteException` | Falta de energia para movimentar ou executar tarefa                     |
-| `RoboIncomunicavelException`   | Tentativa de comunicação com robô que não implementa `Comunicavel`      |
-| `CargaExcessivaException`      | Tentativa de carregar peso acima do limite                              |
-| `RoboTerrestreNaoVoaException` | Tentativa de robô terrestre voar                                        |
+| Exceção                        | Finalidade                                   |
+| ------------------------------ | -------------------------------------------- |
+| `RoboDesligadoException`       | Ação inválida ao operar robô desligado       |
+| `ColisaoException`             | Tentativa de mover-se para célula ocupada    |
+| `ForaDosLimitesException`      | Movimento fora dos limites do ambiente       |
+| `MoverObstaculoException`      | Tentativa de deslocar obstáculo              |
+| `EnergiaInsuficienteException` | Energia insuficiente para ação               |
+| `RoboIncomunicavelException`   | Comunicação com robô sem suporte             |
+| `CargaExcessivaException`      | Excesso de carga acima da capacidade do robô |
+| `RoboTerrestreNaoVoaException` | Tentativa de voo com robô terrestre          |
 
 ---
 
-## 🔧 Robôs e Tarefas Específicas
+## 🤖 Robôs & Tarefas (executarTarefa)
 
-| Robô               | Especialidade                            | Tarefa específica (executarTarefa)         |
-|--------------------|-------------------------------------------|--------------------------------------------|
-| `RoboTerrestre`    | Movimenta-se no plano XY                  | Patrulhar área do solo                      |
-| `RoboAereo`        | Movimenta-se em 3D                        | Sobrevoar e mapear regiões elevadas        |
-| `RoboFurtivo`      | Comunicação furtiva                       | Espionar e reportar                        |
-| `RoboCargueiro`    | Carregamento de cargas                    | Transportar recursos entre regiões         |
-| `BispoRobo`        | Movimento diagonal                        | Cobertura tática em X-Y com sensores       |
-| `CavaloRobo`       | Movimento em L                            | Avanço estratégico em pontos complexos     |
-
----
-
-## 🌍 Ambiente
-
-- Representado por um cubo 3D (`TipoEntidade[][][]`)
-- Entidades registradas em lista (`ArrayList<Entidade>`)
-- Permite:
-  - Adição/remoção de robôs
-  - Visualização 2D (plano XY)
-  - Detecção de colisões
-  - Limite espacial
+| Robô            | Especialidade          | Tarefa                                   |
+| --------------- | ---------------------- | ---------------------------------------- |
+| `RoboTerrestre` | Plano XY               | Patrulhar área terrestre                 |
+| `RoboAereo`     | Movimento em 3D        | Sobrevoar e mapear áreas elevadas        |
+| `RoboFurtivo`   | Comunicação discreta   | Espionagem e envio de relatórios         |
+| `RoboCargueiro` | Transporte de recursos | Carregar e entregar cargas               |
+| `BispoRobo`     | Movimento diagonal     | Cobertura tática com sensores            |
+| `CavaloRobo`    | Movimento em L         | Avanço estratégico em terrenos complexos |
 
 ---
 
-## 🧱 Obstáculos
+## 🌍 Ambiente & Obstáculos
 
-Tipos definidos em `TipoObstaculo`:
+* **Ambiente:** Grade 3D (`TipoEntidade[][][]`) gerenciada por `Ambiente`.
+* **Obstáculos** (`TipoObstaculo`): `PAREDE`, `ARVORE`, `PREDIO`, `BURACO`, `OUTRO`.
 
-- `PAREDE`, `ARVORE`, `PREDIO`, `BURACO`, `OUTRO`
-- Cada um tem altura e bloqueio de passagem
-- Representação no mapa: `#`, `@`, `&`, `O`, `?`
+  * Cada tipo define altura, bloqueio de passagem e símbolo de mapa.
 
 ---
 
 ## 👁️ Sensores
 
-Localizados em `sensores/`, destacam-se:
+Implementações em `sensores/`:
 
-- `SensorMagnetico`, `SensorUltrassonico`
-- `SensorMovimentoCavalo`, `SensorMovimentoDiagonal`
-- `SensorStamina`, `SensorLimiteAmbiente`, `SensorAlcanceDiagonal`
+* `SensorMagnetico`, `SensorUltrassonico`
+* `SensorMovimentoCavalo`, `SensorMovimentoDiagonal`
+* `SensorStamina`, `SensorLimiteAmbiente`, `SensorAlcanceDiagonal`
 
-Todos utilizam polimorfismo com a interface `Sensoreavel`.
+`GerenciadorSensores` centraliza leituras e notifica atuadores.
 
 ---
 
 ## 💬 Comunicação
 
-- Robôs que implementam `Comunicavel` podem enviar e receber mensagens.
-- `CentralComunicacao` armazena histórico global de todas as interações.
-- Exibição das mensagens é possível via menu.
+* Robôs com `Comunicavel` trocam mensagens via `CentralComunicacao`.
+* Histórico global disponível no menu interativo.
 
 ---
 
 ## 🕹️ Menu Interativo
 
-Disponível em `Main.java`, com as seguintes funcionalidades:
+Opções em `Main.java`:
 
-- Listar robôs por tipo e estado
-- Controlar movimentação 3D
-- Executar tarefas específicas
-- Ativar/desligar robôs
-- Ver ambiente 2D
-- Monitorar sensores
-- Realizar comunicação
-- Ver mensagens trocadas
+1. Listar robôs (ID, tipo, estado, posição)
+2. Movimentação manual (X, Y, Z)
+3. Atribuir/executar missão
+4. Ativar/desligar robô
+5. Exibir ambiente 2D (plano XY)
+6. Monitorar sensores
+7. Enviar/ler mensagens
+8. Exibir logs no terminal
+9. Sair
 
 ---
 
 ## 🧪 Testes Automatizados
 
-`TesteAutomatizado.java` permite simulações com:
-- Movimentações de robôs
-- Testes de exceções
-- Ações predefinidas
+`TesteAutomatizado.java` (JUnit 5):
+
+* Movimentações válidas e inválidas
+* Comunicação e restrições de interfaces
+* Lançamento de exceções personalizadas
 
 ---
 
-## 🧱 Diagrama UML
+## 📐 Diagrama UML
 
-Veja o arquivo: [`diagrama_lab4.png`](./lab04/diagrama_lab4.png)
-
-Inclui:
-- Interfaces
-- Relações de herança
-- Exceções personalizadas
+Confira `diagrama_lab4.png` para visão completa de classes, interfaces e exceções.
 
 ---
 
-## ▶️ Compilação e Execução
+## ▶️ Compilação & Execução
 
-### Usando terminal:
-
-```bash
-javac */*.java *.java
-java Main
-```
-
-Ou para teste automatizado:
+### Terminal
 
 ```bash
-java TesteAutomatizado
+# Compilar
+javac -d out Main.java TesteAutomatizado.java */*.java
+
+# Executar simulador
+java -cp out Main
+
+# Executar testes
+java -cp out TesteAutomatizado
 ```
 
 ---
 
-## ✅ Requisitos Atendidos
+## 👥 Autores
 
-- [x] Polimorfismo
-- [x] Herança múltipla com interfaces
-- [x] Exceções personalizadas
-- [x] Tarefas específicas por robô
-- [x] Sistema de sensores e comunicação
-- [x] Menu interativo completo
-- [x] Testes em classe separada
-- [x] Documentação detalhada (este README)
+* **Gabriel Mattias Antunes**
+* **Isaias Junio Jarcem**
 
----
-
-Desenvolvido por: **Gabriel Mattias Antunes e Isaias Junio Jarcem**  
-Universidade Estadual de Campinas – Engenharia de Computação  
-MC322 – Programação Orientada a Objetos
-
+UNICAMP – Engenharia de Computação | MC322
