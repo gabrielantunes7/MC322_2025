@@ -146,7 +146,7 @@ Opções em `Main.java`:
 
 ## 📐 Diagrama UML
 
-Confira `diagrama_lab4.png` para visão completa de classes, interfaces e exceções.
+Confira `diagrama_lab5.png` para visão completa de classes, interfaces e exceções.
 
 ---
 
