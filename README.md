@@ -42,14 +42,18 @@ lab04/
 
 ## 🧠 Interfaces Implementadas
 
-| Interface     | Descrição                              | Implementação                  |
-| ------------- | -------------------------------------- | ------------------------------ |
-| `Entidade`    | Contrato base para objetos no ambiente | Todos robôs e obstáculos       |
-| `Comunicavel` | Envia e recebe mensagens               | `RoboFurtivo`, `RoboCargueiro` |
-| `Sensoreavel` | Detecção e notificação de sensores     | Robôs com sensores             |
-| `Carregavel`  | Capacidade de transportar carga        | `RoboCargueiro`                |
-| `IBispoRobo`  | Movimento diagonal no plano XY         | `BispoRobo`                    |
-| `ICavaloRobo` | Movimento em L                         | `CavaloRobo`                   |
+| Interface       | Descrição                              | Implementação                  |
+| -------------   | -------------------------------------- | ------------------------------ |
+| `Entidade`    | Contrato base para objetos no ambiente   | Todos robôs e obstáculos       |
+| `Comunicavel` | Envia e recebe mensagens                 | `RoboFurtivo`, `RoboCargueiro` |
+| `Sensoreavel` | Detecção e notificação de sensores       | Robôs com sensores             |
+| `Carregavel`  | Capacidade de transportar carga          | `RoboCargueiro`                |
+| `IBispoRobo`  | Movimento diagonal no plano XY           | `BispoRobo`                    |
+| `ICavaloRobo`        | Movimento em L                    | `CavaloRobo`                   |
+| `MissaoConstrutor`   | Guia nosso robo construtor        | `RoboAutomatoConstrutor`       |
+| `MIssaoDestruirRobo` | Guia nosso robo assasino          | `RoboAssassino `               |
+| `Missao`             | "pai" de todas as MIssoes         | `E herdada pelas outras`       |
+
 
 ---
 
@@ -70,14 +74,19 @@ lab04/
 
 ## 🤖 Robôs & Tarefas (executarTarefa)
 
-| Robô            | Especialidade          | Tarefa                                   |
-| --------------- | ---------------------- | ---------------------------------------- |
-| `RoboTerrestre` | Plano XY               | Patrulhar área terrestre                 |
-| `RoboAereo`     | Movimento em 3D        | Sobrevoar e mapear áreas elevadas        |
-| `RoboFurtivo`   | Comunicação discreta   | Espionagem e envio de relatórios         |
-| `RoboCargueiro` | Transporte de recursos | Carregar e entregar cargas               |
-| `BispoRobo`     | Movimento diagonal     | Cobertura tática com sensores            |
-| `CavaloRobo`    | Movimento em L         | Avanço estratégico em terrenos complexos |
+| Robô                    | Especialidade          | Tarefa                                   |
+| ---------------         | ---------------------- | ---------------------------------------- |
+| `RoboTerrestre`         | Plano XY               | Patrulhar área terrestre                 |
+| `RoboAereo`             | Movimento em 3D        | Sobrevoar e mapear áreas elevadas        |
+| `RoboFurtivo`           | Comunicação discreta   | Espionagem e envio de relatórios         |
+| `RoboCargueiro`         | Transporte de recursos | Carregar e entregar cargas               |
+| `BispoRobo`             | Movimento diagonal     | Cobertura tática com sensores            |
+| `CavaloRobo`            | Movimento em L         | Avanço estratégico em terrenos complexos |
+| `RoboAutomatoConstrutor`| Planta arvores         | Adiciona obstáculos no caminho           |
+| `RoboAssassino`         | Destroi outros robos   | Robo autonomo que destroi outros         |
+| `AgenteInteligente`     | Movimento automatico   | Pai dos Robos que recebem missoes        |
+
+
 
 ---
 
