@@ -18,9 +18,8 @@ Simulador 3D de robôs autônomos com diferentes capacidades, desenvolvido em Ja
 
 ## 🛠️ Tecnologias & IDEs
 
-* **Linguagem:** Java SE 8+
+* **Linguagem:** Java SE
 * **IDE:** IntelliJ IDEA, Visual Studio Code
-* **Ferramentas:** Maven (opcional), JUnit 5 (testes unitários)
 
 ---
 
