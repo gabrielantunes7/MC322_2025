@@ -128,7 +128,7 @@ Opções em `Main.java`:
 
 ## 🧪 Testes Automatizados
 
-`TesteAutomatizado.java` (JUnit 5):
+`TesteAutomatizado.java`:
 
 * Movimentações válidas e inválidas
 * Comunicação e restrições de interfaces
